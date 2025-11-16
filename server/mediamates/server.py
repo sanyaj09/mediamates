@@ -1,6 +1,9 @@
 from typing import Union
 from fastapi import FastAPI
 from pydantic import BaseModel
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
 
 # Create a FastAPI application instance
 app = FastAPI()
@@ -30,3 +33,11 @@ def create_item(item: Item):
 @app.put("/items/{item_id}")
 def update_item(item_id: int, item: Item):
     return {"item_name": item.name, "item_id": item_id, "updated_item": item.dict()}
+
+# Configure Jinja2Templates to find templates in the "templates" directory
+templates = Jinja2Templates(directory="templates")
+
+@app.get("/dynamic", response_class=HTMLResponse)
+async def read_item(request: Request, name: str = "Guest"):
+    # Render the "item.html" template with dynamic data
+    return templates.TemplateResponse("item.html", {"request": request, "name": name})
