@@ -1,102 +1,113 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Background Image Example</title>
+<title>Login</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body, html {
-  height: 100%; /* Ensures the body and html elements take full height */
-  margin: 0; /* Removes default body margin */
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #8c927c;
+}
+
+/* Aspect ratio wrapper (2048×1147 = 1.7855) */
+.scaled-wrapper {
+  width: 100vw;
+  height: calc(100vw / 1.7855);
+  max-height: 100vh;
+  max-width: calc(100vh * 1.7855);
+  margin: auto;
+  position: relative;
 }
 
 .bg-image {
-  /* The image used */
-  background-image: url("static/images/login.png"); /* Replace with your image path */
-
-  /* Full height */
-  height: 100%;
-
-  /* Center and scale the image nicely */
+  position: absolute;
+  inset: 0;
+  background-image: url("static/images/login.png");
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
-  background-repeat: no-repeat; /* Prevents image repetition */
-  background-size: contain; /* Scales image to cover the entire element */
 }
 
-.container {
-  position: relative; /* The containing block for the absolutely positioned div */
-  {#width: 1024px;#}
-  {#height: 1000px;#}
-  {#border: 2px solid blue;#}
-}
-
+/* Username Input Field */
 .username {
   position: absolute;
-  top: 285px;
-  left: 470px;
-  width: 300px;
-  height: 30px;
-  {#background-color: yellow;#}
-  color: white;
-  {#text-align: center;#}
-  line-height: 30px; /* Vertically centers text in this case */
+  top: 45.34%;
+  left: 42.73%;
+  width: 30.02%;
+  height: 6.54%;
+}
+.username input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: 1.3vw;
+  padding-left: 10px;
+  background: transparent;
 }
 
+/* Password Input Field */
 .password {
   position: absolute;
-  top: 350px;
-  left: 470px;
-  width: 300px;
-  height: 30px;
-  {#background-color: yellow;#}
-  color: white;
-  {#text-align: center;#}
-  line-height: 30px; /* Vertically centers text in this case */
+  top: 57.09%;
+  left: 42.73%;
+  width: 30.02%;
+  height: 6.54%;
+}
+.password input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: 1.3vw;
+  padding-left: 10px;
+  background: transparent;
 }
 
+/* Login Button */
 .login {
   position: absolute;
-  top: 430px;
-  left: 450px;
-  width: 170px;
-  height: 40px;
-  {#background-color: yellow;#}
-  color: white;
-  text-align: center;
-  line-height: 40px; /* Vertically centers text in this case */
+  top: 71%;
+  left: 42.8%;
+  width: 24.41%;
+  height: 8.28%;
+  cursor: pointer;
 }
 
-.home {
+/* Home Button (MediaMates logo) */
+.home-btn {
   position: absolute;
-  top: 30px;
-  left: 20px;
-  width: 220px;
-  height: 90px;
-  background-color: yellow;
-  color: white;
-  text-align: center;
-  line-height: 40px; /* Vertically centers text in this case */
+  top: 0%;
+  left: 0%;
+  width: 21.97%;
+  height: 22.66%;
+  cursor: pointer;
 }
-
 </style>
-<script>
-  function myFunction() {
-    alert("Div was clicked!");
-  }
-</script>
+
 </head>
+
 <body>
 
-<div class="bg-image container">
-  <!-- Content of your webpage goes here -->
-    <div class="home" onclick="window.location.href='/home'" style="cursor: pointer;">
-    </div>
-    <div class="username">
-        <input type="text" id="username"/>
-    </div>
-    <div class="password">
-        <input type="password" id="password"/>
-    </div>
-    <div class="login" onclick="window.location.href='/user'" style="cursor: pointer;">
-    </div>
+<div class="scaled-wrapper">
+  <div class="bg-image"></div>
+
+  <!-- Home Button goes to home.html -->
+  <div class="home-btn" onclick="window.location.href='/home'"></div>
+
+  <!-- Username -->
+  <div class="username">
+    <input type="text" id="username">
+  </div>
+
+  <!-- Password -->
+  <div class="password">
+    <input type="password" id="password">
+  </div>
+
+  <!-- Login -->
+  <div class="login" onclick="window.location.href='/user'"></div>
 </div>
 
 </body>

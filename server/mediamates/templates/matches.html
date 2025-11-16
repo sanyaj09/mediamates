@@ -28,17 +28,44 @@ body, html {
   {#border: 2px solid blue;#}
 }
 
-.absolute-div {
+.row1 {
   position: absolute;
-  top: 50px;
-  left: 910px;
-  width: 70px;
-  height: 60px;
-  {#background-color: yellow;#}
-  color: white;
+  top: 290px;
+  width: 100px;
+  height: 20px;
+  background-color: yellow;
+  color: black;
   text-align: center;
-  line-height: 60px; /* Vertically centers text in this case */
+  line-height: 20px; /* Vertically centers text in this case */
 }
+
+.row2 {
+  position: absolute;
+  top: 480px;
+  width: 100px;
+  height: 20px;
+  background-color: yellow;
+  color: black;
+  text-align: center;
+  line-height: 20px; /* Vertically centers text in this case */
+}
+
+.col1 {
+  left: 130px;
+}
+
+.col2 {
+  left: 370px;
+}
+
+.col3 {
+  left: 600px;
+}
+
+.col4 {
+  left: 840px;
+}
+
 
 </style>
 </head>
@@ -48,8 +75,15 @@ body, html {
   <!-- Content of your webpage goes here -->
 {#  <h1>Welcome to my page!</h1>#}
 {#  <p>This is some content on top of the background image.</p>#}
-    <div class="absolute-div" onclick="window.location.href='/login'" style="cursor: pointer;">
-    </div>
+    <div class="row1 col1" style="cursor: pointer;">{{ matches[0] }}</div>
+    <div class="row1 col2" style="cursor: pointer;">{{ matches[1] }}</div>
+    <div class="row1 col3" style="cursor: pointer;">{{ matches[2] }}</div>
+    <div class="row1 col4" style="cursor: pointer;">{{ matches[3] }}</div>
+    <div class="row2 col1" style="cursor: pointer;">{{ matches[4] }}</div>
+    <div class="row2 col2" style="cursor: pointer;">{{ matches[5] }}</div>
+    <div class="row2 col3" style="cursor: pointer;">{{ matches[6] }}</div>
+    <div class="row2 col4" style="cursor: pointer;">{{ matches[7] }}</div>
+
 </div>
 
 </body>

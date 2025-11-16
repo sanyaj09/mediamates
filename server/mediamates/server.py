@@ -1,5 +1,5 @@
 from typing import Union
-from fastapi import FastAPI
+
 from pydantic import BaseModel
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
@@ -69,4 +69,22 @@ async def read_item(request: Request, name: str = "Guest"):
 @app.get("/matches", response_class=HTMLResponse)
 async def read_item(request: Request, name: str = "Guest"):
     # Render the "item.html" template with dynamic data
-    return templates.TemplateResponse("matches.html", {"request": request, "name": name})
+    from match import find_matches
+
+    matches = find_matches()
+
+    return templates.TemplateResponse("matches.html", {"request": request, "matches": matches})
+
+@app.post("/spotify")
+async def read_item(request: Request, name: str = "Guest"):
+    from spotify import get_playlist
+
+    payload = await request.json()
+    return get_playlist(payload['playlist_id'])
+
+@app.post("/gemini")
+async def read_item(request: Request, name: str = "Guest"):
+    from gemini import evaluate
+
+    payload = await request.json()
+    return evaluate(payload['playlist'])

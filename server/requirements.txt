@@ -1,3 +1,8 @@
 fastapi
 uvicorn
 jinja2
+pandas
+numpy
+ujson
+spotipy
+google-genai

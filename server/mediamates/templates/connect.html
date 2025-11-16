@@ -49,6 +49,46 @@ html, body {
   height: 15.26%;   /* h = 175 / 1147 */
   cursor: pointer;
 }
+
+/* Modal Overlay */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  max-width: 500px; /* Max width for larger screens */
+  position: relative;
+}
+
+/* Close Button */
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 </style>
 </head>
 
@@ -57,7 +97,86 @@ html, body {
     <div class="bg-image"></div>
 
     <div class="letterboxd" onclick="window.location.href='/user'"></div>
-    <div class="spotify" onclick="window.location.href='/user'"></div>
+    <div class="spotify" onclick="myFunction()"></div>
   </div>
+<!-- Modal Structure -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Connect</h2>
+        <label for="playlist">Sportify playlist:</label><input type="text" id="playlist"/>
+        <button id="connect">Connect</button>
+        <div>
+            Spotify Result
+            <textarea id="result"></textarea>
+        </div>
+        <div>
+            Gemini Result
+            <textarea id="result2"></textarea>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close-button")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    function myFunction() {
+      document.getElementById('result').innerText='';
+      modal.style.display = "block";
+    }
+
+    document.getElementById('connect').addEventListener('click', async () => {
+    try {
+        const response = await fetch('/spotify', {
+            method: 'POST', // Or 'GET', 'PUT', 'DELETE' depending on your API
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ playlist_id: document.getElementById('playlist').value }) // Optional: send data to the backend
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        document.getElementById('result').innerText = `${JSON.stringify(result)}`;
+
+        const response2 = await fetch('/gemini', {
+            method: 'POST', // Or 'GET', 'PUT', 'DELETE' depending on your API
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ playlist: result }) // Optional: send data to the backend
+        });
+
+        const result2 = await response2.json();
+        document.getElementById('result2').innerText = `${JSON.stringify(result2)}`;
+
+
+    } catch (error) {
+        console.error('Error calling API:', error);
+        document.getElementById('result').innerText = `Error: ${error.message}`;
+    }
+});
+</script>
+
 </body>
 </html>
+
