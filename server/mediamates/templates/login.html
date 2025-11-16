@@ -5,6 +5,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Vintage font -->
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+
 <style>
 html, body {
   margin: 0;
@@ -31,38 +34,41 @@ html, body {
   background-position: center;
 }
 
-/* Username Input Field */
+/* Username Input Field container */
 .username {
   position: absolute;
-  top: 45.34%;
-  left: 42.73%;
-  width: 30.02%;
-  height: 6.54%;
-}
-.username input {
-  width: 100%;
-  height: 100%;
-  border: none;
-  font-size: 1.3vw;
-  padding-left: 10px;
-  background: transparent;
+  top: 46%;
+  left: 45%;
+  width: 25%;
+  height: 6.04%;
 }
 
-/* Password Input Field */
+/* Password Input Field container */
 .password {
   position: absolute;
-  top: 57.09%;
-  left: 42.73%;
-  width: 30.02%;
-  height: 6.54%;
+  top: 57.59%;
+  left: 45%;
+  width: 25%;
+  height: 6.04%;
 }
+
+/* Actual input boxes */
+.username input,
 .password input {
   width: 100%;
   height: 100%;
-  border: none;
+  font-family: 'Special Elite', cursive;
   font-size: 1.3vw;
+  color: black;
+
+  /* Border styling (vintage green/teal) */
+  border: 2px solid #6f7f74;
+  border-radius: 6px;
+
+  background: rgba(255,255,255,0.0); /* transparent */
   padding-left: 10px;
-  background: transparent;
+
+  outline: none; /* remove blue focus highlight */
 }
 
 /* Login Button */
@@ -75,7 +81,7 @@ html, body {
   cursor: pointer;
 }
 
-/* Home Button (MediaMates logo) */
+/* Home Button */
 .home-btn {
   position: absolute;
   top: 0%;
@@ -93,7 +99,7 @@ html, body {
 <div class="scaled-wrapper">
   <div class="bg-image"></div>
 
-  <!-- Home Button goes to home.html -->
+  <!-- Home Button -->
   <div class="home-btn" onclick="window.location.href='/home'"></div>
 
   <!-- Username -->
