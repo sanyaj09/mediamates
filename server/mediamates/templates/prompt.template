@@ -1,0 +1,12 @@
+Given all songs in a Spotify playlist -
+
+{{playlist}}
+
+return a letter to indicate the overall genre of there songs.
+the letter should be
+A - Pop
+B - Classic
+C - R&B
+D - Jazz
+E - Other
+

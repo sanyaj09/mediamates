@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #8c927c;
+}
+
+/* Aspect ratio wrapper (2048×1147 = 1.7855) */
+.scaled-wrapper {
+  width: 100vw;
+  height: calc(100vw / 1.7855);
+  max-height: 100vh;
+  max-width: calc(100vh * 1.7855);
+  margin: auto;
+  position: relative;
+}
+
+.bg-image {
+  position: absolute;
+  inset: 0;
+  background-image: url("static/images/login.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Username Input Field */
+.username {
+  position: absolute;
+  top: 45.34%;
+  left: 42.73%;
+  width: 30.02%;
+  height: 6.54%;
+}
+.username input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: 1.3vw;
+  padding-left: 10px;
+  background: transparent;
+}
+
+/* Password Input Field */
+.password {
+  position: absolute;
+  top: 57.09%;
+  left: 42.73%;
+  width: 30.02%;
+  height: 6.54%;
+}
+.password input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: 1.3vw;
+  padding-left: 10px;
+  background: transparent;
+}
+
+/* Login Button */
+.login {
+  position: absolute;
+  top: 71%;
+  left: 42.8%;
+  width: 24.41%;
+  height: 8.28%;
+  cursor: pointer;
+}
+
+/* Home Button (MediaMates logo) */
+.home-btn {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 21.97%;
+  height: 22.66%;
+  cursor: pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="scaled-wrapper">
+  <div class="bg-image"></div>
+
+  <!-- Home Button goes to home.html -->
+  <div class="home-btn" onclick="window.location.href='/home'"></div>
+
+  <!-- Username -->
+  <div class="username">
+    <input type="text" id="username">
+  </div>
+
+  <!-- Password -->
+  <div class="password">
+    <input type="password" id="password">
+  </div>
+
+  <!-- Login -->
+  <div class="login" onclick="window.location.href='/user'"></div>
+</div>
+
+</body>
+</html>

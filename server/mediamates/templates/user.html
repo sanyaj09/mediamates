@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>User Page</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #8c927c;
+}
+
+/* Aspect ratio wrapper (2048 × 1147 = 1.7855) */
+.scaled-wrapper {
+  width: 100vw;
+  height: calc(100vw / 1.7855);
+  max-height: 100vh;
+  max-width: calc(100vh * 1.7855);
+  margin: auto;
+  position: relative;
+}
+
+.bg-image {
+  position: absolute;
+  inset: 0;
+  background-image: url("static/images/user.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Home Button on MediaMates logo */
+.home-btn {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 21.97%;
+  height: 22.66%;
+  cursor: pointer;
+}
+
+/* CONNECT button */
+.connect {
+  position: absolute;
+  top: 60.6%;
+  left: 10.50%;
+  width: 20.51%;
+  height: 7.2%;
+  cursor: pointer;
+}
+
+/* MATCHES button */
+.matches {
+  position: absolute;
+  top: 69.2%;
+  left: 10.50%;
+  width: 20.51%;
+  height: 7.2%;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="scaled-wrapper">
+  <div class="bg-image"></div>
+
+  <!-- NEW HOME BUTTON -->
+  <div class="home-btn" onclick="window.location.href='/home'"></div>
+
+  <!-- Navigation buttons -->
+  <div class="connect" onclick="window.location.href='/connect'"></div>
+  <div class="matches" onclick="window.location.href='/matches'"></div>
+
+</div>
+
+</body>
+</html>
