@@ -64,6 +64,18 @@ body, html {
   line-height: 40px; /* Vertically centers text in this case */
 }
 
+.home {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  width: 220px;
+  height: 90px;
+  background-color: yellow;
+  color: white;
+  text-align: center;
+  line-height: 40px; /* Vertically centers text in this case */
+}
+
 </style>
 <script>
   function myFunction() {
@@ -75,6 +87,8 @@ body, html {
 
 <div class="bg-image container">
   <!-- Content of your webpage goes here -->
+    <div class="home" onclick="window.location.href='/home'" style="cursor: pointer;">
+    </div>
     <div class="username">
         <input type="text" id="username"/>
     </div>
