@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from starlette.staticfiles import StaticFiles
 
 # Create a FastAPI application instance
 app = FastAPI()
@@ -34,6 +35,9 @@ def create_item(item: Item):
 def update_item(item_id: int, item: Item):
     return {"item_name": item.name, "item_id": item_id, "updated_item": item.dict()}
 
+# static contents
+app.mount('/static', StaticFiles(directory='static', html=True), name='static')
+
 # Configure Jinja2Templates to find templates in the "templates" directory
 templates = Jinja2Templates(directory="templates")
 
@@ -41,3 +45,28 @@ templates = Jinja2Templates(directory="templates")
 async def read_item(request: Request, name: str = "Guest"):
     # Render the "item.html" template with dynamic data
     return templates.TemplateResponse("item.html", {"request": request, "name": name})
+
+@app.get("/home", response_class=HTMLResponse)
+async def read_item(request: Request, name: str = "Guest"):
+    # Render the "item.html" template with dynamic data
+    return templates.TemplateResponse("home.html", {"request": request, "name": name})
+
+@app.get("/login", response_class=HTMLResponse)
+async def read_item(request: Request, name: str = "Guest"):
+    # Render the "item.html" template with dynamic data
+    return templates.TemplateResponse("login.html", {"request": request, "name": name})
+
+@app.get("/user", response_class=HTMLResponse)
+async def read_item(request: Request, name: str = "Guest"):
+    # Render the "item.html" template with dynamic data
+    return templates.TemplateResponse("user.html", {"request": request, "name": name})
+
+@app.get("/connect", response_class=HTMLResponse)
+async def read_item(request: Request, name: str = "Guest"):
+    # Render the "item.html" template with dynamic data
+    return templates.TemplateResponse("connect.html", {"request": request, "name": name})
+
+@app.get("/matches", response_class=HTMLResponse)
+async def read_item(request: Request, name: str = "Guest"):
+    # Render the "item.html" template with dynamic data
+    return templates.TemplateResponse("matches.html", {"request": request, "name": name})
