@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Background Image Example</title>
+<style>
+body, html {
+  height: 100%; /* Ensures the body and html elements take full height */
+  margin: 0; /* Removes default body margin */
+}
+
+.bg-image {
+  /* The image used */
+  background-image: url("static/images/home.png"); /* Replace with your image path */
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat; /* Prevents image repetition */
+  background-size: contain; /* Scales image to cover the entire element */
+}
+
+.container {
+  position: relative; /* The containing block for the absolutely positioned div */
+  {#width: 1024px;#}
+  {#height: 1000px;#}
+  {#border: 2px solid blue;#}
+}
+
+.absolute-div {
+  position: absolute;
+  top: 50px;
+  left: 910px;
+  width: 70px;
+  height: 60px;
+  /*background-color: yellow;*/
+  color: white;
+  text-align: center;
+  line-height: 60px; /* Vertically centers text in this case */
+}
+
+</style>
+</head>
+<body>
+
+<div class="bg-image container">
+  <!-- Content of your webpage goes here -->
+{#  <h1>Welcome to my page!</h1>#}
+{#  <p>This is some content on top of the background image.</p>#}
+    <div class="absolute-div" onclick="window.location.href='/login'" style="cursor: pointer;">
+    </div>
+</div>
+
+</body>
+</html>
